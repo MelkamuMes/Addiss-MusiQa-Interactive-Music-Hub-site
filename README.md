@@ -95,9 +95,9 @@ Feel free to check out my LinkedIn profile for more about my work and profession
    git clone https://github.com/yourusername/Addiss-MusiQa-Interactive-Music-Hub-site.git
 Navigate to the project directory:
 
-bash
+``` bash
 Copy code
-cd Addiss-MusiQa-Interactive-Music-Hub-site
+cd  Addiss-MusiQa-Interactive-Music-Hub-site
 Install the dependencies:
 
 bash
@@ -116,3 +116,4 @@ Feel free to fork the repository, submit issues, and contribute to the project. 
 License
 This project is licensed under the MIT License.:
 
+```
