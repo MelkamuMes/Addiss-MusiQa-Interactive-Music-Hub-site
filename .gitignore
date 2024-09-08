@@ -36,11 +36,10 @@ client/src/userdata/*
 client/src/loginpage/*
 client/src/TailW_src/*
 client/src/TailWBuild/*
-client/src/components/img/*
+client/src/components/features/*
 client/src/components/Header/ChangePopUp.js
 client/src/components/Header/ChangePopUp.css
 client/src/components/Header/LoginPopUp.js
 client/src/components/Header/LoginPopUp.css
-client/src/userdata/Login.js
-client/src/userdata/User.js
+client/src/userdata/*
 client/tailwind.config.js
