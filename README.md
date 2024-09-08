@@ -25,7 +25,7 @@ Feel free to check out my LinkedIn profile for more about my work and profession
 
 Here's a preview of the user interface design:
 
-![UI Design](https://www.figma.com/proto/Hz3bu6jbOGyY7o4IYHnbnv/DailyTimeSchedule?node-id=20-93&t=eSxRynh5wXUjs7LC-1)
+![UI Design](https://github.com/MelkamuMes/Addiss-MusiQa-Interactive-Music-Hub-site/blob/main/client/src/Components/img/Frame%201%20(2).png)
 
 
 ## Features
