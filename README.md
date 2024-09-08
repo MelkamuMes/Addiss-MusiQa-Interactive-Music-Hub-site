@@ -109,9 +109,7 @@ Start the development server:
 npm start 
   Open your browser and go to http://localhost:3000 to view the application.```
 
-the backend server also is on  
-
-``` bash http://localhost:5000 but you can adjust that.
+the backend server also is on http://localhost:5000 but you can adjust that.
 
 Contributing
 Feel free to fork the repository, submit issues, and contribute to the project. Your feedback and improvements are highly appreciated!
