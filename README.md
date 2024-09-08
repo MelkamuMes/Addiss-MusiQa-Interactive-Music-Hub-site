@@ -19,7 +19,7 @@ I built this project as part of the Addiss Software Internship Challenge. The pr
 
 Feel free to check out my LinkedIn profile for more about my work and professional background:
 
-[LinkedIn Profile](https://www.linkedin.com/in/your-profile)
+[LinkedIn Profile](www.linkedin.com/in/melkamu-mesene-4a0780264)
 
 ## UI Design
 
