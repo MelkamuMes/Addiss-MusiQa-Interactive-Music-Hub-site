@@ -4,16 +4,12 @@ const Song = require('../models/song');
 const getSongs = async (req, res) => {
     try {
         const songs = await Song.findAll();
-        console.log(songs)
         res.status(200).json(songs);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-
-
-// !Updated add and updaate file methods are Starting
 // Add a new song
 const addSong = async (req, res) => {
     try {
@@ -22,7 +18,6 @@ const addSong = async (req, res) => {
         }
 
         const { title, artist } = req.body;
-        // const audioUrl = `/uploads/${req.file.filename}`; // Correct path for the audio file
         const audioUrl = req.file.filename; // Correct path for the audio file
 
         const newSong = await Song.create({ title, artist, audioUrl });
@@ -33,32 +28,35 @@ const addSong = async (req, res) => {
     }
 };
 
-// Update an existing song
-const updateSong = async (req, res) => {
+// Search song by ID, name, or title
+const searchSong = async (req, res) => {
+    const { query } = req.query;
     try {
-        const { id } = req.params;
-        const { title, artist } = req.body;
-        const audioUrl = req.file ? `/uploads/${req.file.filename}` : undefined; // Update URL if file is provided
-
-        const song = await Song.findByPk(id);
-
-        if (song) {
-            song.title = title || song.title;
-            song.artist = artist || song.artist;
-            if (audioUrl) song.audioUrl = audioUrl;
-
-            await song.save();
-            res.status(200).json(song);
-        } else {
-            res.status(404).json({ message: 'Song not found' });
-        }
+        const songs = await Song.findAll({
+            where: {
+                [Op.or]: [
+                    { title: { [Op.iLike]: `%${query}%` } },
+                    { artist: { [Op.iLike]: `%${query}%` } },
+                    { id: query },
+                ],
+            },
+        });
+        res.json(songs);
     } catch (error) {
-        console.error('Error updating song:', error);
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: 'Error searching songs' });
     }
 };
 
-// !Updated add and updaate file methods are Ending
+// Update an existing song
+const updateSong = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const updatedSong = await Song.update(req.body, { where: { id }, returning: true });
+        res.json(updatedSong[1][0]);
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating song' });
+    }
+};
 
 // Delete a song
 const deleteSong = async (req, res) => {
@@ -77,4 +75,4 @@ const deleteSong = async (req, res) => {
     }
 };
 
-module.exports = { getSongs, addSong, updateSong, deleteSong };
+module.exports = { getSongs, addSong, updateSong, deleteSong, searchSong };

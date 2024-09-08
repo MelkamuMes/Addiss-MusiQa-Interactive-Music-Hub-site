@@ -1,64 +1,77 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const SongForm = ({ setMessage }) => {
+const SongForm = ({ selectedSong, isUpdateMode, onClose }) => {
     const [title, setTitle] = useState('');
     const [artist, setArtist] = useState('');
     const [file, setFile] = useState(null);
+
+    useEffect(() => {
+        if (isUpdateMode && selectedSong) {
+            setTitle(selectedSong.title);
+            setArtist(selectedSong.artist);
+            setFile(null); // Clear file input when updating
+        } else {
+            setTitle('');
+            setArtist('');
+            setFile(null);
+        }
+    }, [selectedSong, isUpdateMode]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('title', title);
         formData.append('artist', artist);
-        formData.append('audio', file);
+        if (file) formData.append('audio', file);
 
         try {
-            await axios.post('http://localhost:5000/api/songs', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
-            // Clear form
-            setTitle('');
-            setArtist('');
-            setFile(null);
-            // Set success message
-            setMessage('Song added successfully!');
+            if (isUpdateMode) {
+                await axios.put(`http://localhost:5000/api/songs/${selectedSong.id}`, formData, {
+                    headers: { 'Content-Type': 'multipart/form-data' },
+                });
+            } else {
+                await axios.post('http://localhost:5000/api/songs', formData, {
+                    headers: { 'Content-Type': 'multipart/form-data' },
+                });
+            }
+            onClose(true); // Notify success
         } catch (error) {
-            console.error('Error adding song:', error);
-            // Set error message
-            setMessage('Error adding song. Please try again.');
+            console.error('Error submitting form:', error);
+            onClose(false); // Notify failure
         }
     };
 
     return (
-        <form onSubmit={handleSubmit} style={styles.form}>
-            <input
-                type="text"
-                placeholder="Title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-                style={styles.input}
-            />
-            <input
-                type="text"
-                placeholder="Artist"
-                value={artist}
-                onChange={(e) => setArtist(e.target.value)}
-                required
-                style={styles.input}
-            />
-            <input
-                type="file"
-                accept="audio/*"
-                onChange={(e) => setFile(e.target.files[0])}
-                required
-                style={styles.fileInput}
-            />
-            <button type="submit" style={styles.button}>Add Song</button>
-        </form>
+        <div className="form-container">
+            <form onSubmit={handleSubmit} style={styles.form}>
+                <h2>{isUpdateMode ? 'Update Song' : 'Add Song'}</h2>
+                <input
+                    type="text"
+                    placeholder="Title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    required
+                    style={styles.input}
+                />
+                <input
+                    type="text"
+                    placeholder="Artist"
+                    value={artist}
+                    onChange={(e) => setArtist(e.target.value)}
+                    required
+                    style={styles.input}
+                />
+                <input
+                    type="file"
+                    accept="audio/*"
+                    onChange={(e) => setFile(e.target.files[0])}
+                    style={styles.fileInput}
+                />
+                <button type="submit" style={styles.button}>{isUpdateMode ? 'Update Song' : 'Add Song'}</button>
+                <button type="button" onClick={() => onClose(false)} style={styles.button}>Close</button>
+            </form>
+        </div>
     );
 };
 
@@ -67,7 +80,6 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
         width: '100%',
         maxWidth: '500px',
         margin: '20px auto',
