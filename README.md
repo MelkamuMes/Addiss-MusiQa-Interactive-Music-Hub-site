@@ -23,9 +23,14 @@ Feel free to check out my LinkedIn profile for more about my work and profession
 
 ## UI Design
 
-Here's a preview of the user interface design:
+Here's a MockUp on Figma and design concept :
 
-![UI Design](https://github.com/MelkamuMes/Addiss-MusiQa-Interactive-Music-Hub-site/blob/main/client/src/Components/img/Frame%201%20(2).png)
+![UI Design Figma](https://github.com/MelkamuMes/Addiss-MusiQa-Interactive-Music-Hub-site/blob/main/client/src/Components/img/Frame%201%20(2).png)
+
+This is The actual Website that i built from the above design concept with some adjustement (i will link my Figma Account link on the bottom so please check them out!)
+![HomePage](https://github.com/MelkamuMes/Addiss-MusiQa-Interactive-Music-Hub-site/blob/main/client/src/Components/img/MusicHomePage.png)
+![Add Songs](https://github.com/MelkamuMes/Addiss-MusiQa-Interactive-Music-Hub-site/blob/main/client/src/Components/img/AddSongPage.png)
+![Playlist](https://github.com/MelkamuMes/Addiss-MusiQa-Interactive-Music-Hub-site/blob/main/client/src/Components/img/PlaylistPage.png)
 
 
 ## Features
