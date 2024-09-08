@@ -1,7 +1,37 @@
-# Addiss-MusiQa-Interactive-Music-Hub-site
+# Addiss MusiQa - Interactive Music Hub Site
 
+Welcome to **Addiss MusiQa**, an interactive music hub designed to bring your favorite songs to life. This project showcases a modern music website that allows users to browse, upload, and play music with an intuitive and engaging interface.
 
-Welcome to the Addiss-MusiQa-Interactive-Music-Hub Website project! This is a modern web application designed for music lovers to explore, upload, and manage their favorite songs. The platform allows users to browse a rich catalog of music, listen to tracks, and interact with a seamless and intuitive user interface.
+## Features
+
+- **Music Library**: Browse through a wide selection of songs.
+- **Upload Functionality**: Upload your own music tracks.
+- **Player Controls**: Play, pause, and manage your music.
+- **Search & Filter**: Easily find your favorite songs.
+- **Responsive Design**: Seamless experience on all devices.
+
+## UI Design
+
+![UI Design](https://www.figma.com/design/Hz3bu6jbOGyY7o4IYHnbnv/DailyTimeSchedule?node-id=20-93&t=eSxRynh5wXUjs7LC-1)
+
+## About the Developer
+
+**[Melkamu Mesene]**
+
+I built this project as part of the Addiss Software Internship Challenge. The primary goal was to create an interactive and user-friendly music hub that meets modern web standards. This site was developed using React for the frontend and Node.js with Sequelize for the backend, providing a full-stack solution for managing and playing music.
+
+Feel free to check out my LinkedIn profile for more about my work and professional background:
+
+[LinkedIn Profile](https://www.linkedin.com/in/your-profile)
+
+## Installation & Setup
+
+To run this project locally, follow these steps:
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/yourusername/Addiss-MusiQa-Interactive-Music-Hub-site.git
+
 
 ## Features
 
