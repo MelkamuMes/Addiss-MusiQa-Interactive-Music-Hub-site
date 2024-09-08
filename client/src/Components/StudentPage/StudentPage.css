@@ -1,0 +1,403 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* overflow: hidden; */
+}
+
+.SHome_container {
+    position: absolute;
+    display: inline-block;
+    width: 70vw;
+    height: 70vh;
+    left: 12vw;
+    top: 5vh;
+   /* border: 1px solid black; */
+   /* overflow: scroll; */
+}
+
+.containerText {
+    /* border: 1px solid  rgb(42, 92, 201); */
+    /* color:  rgb(59, 248, 255); */
+    color:  rgb(0, 0, 0);
+    font-size: xx-large;
+    /* padding: 10px 0; */
+    /* padding-left: 40%; */
+}
+
+.allBox {
+    position: relative;
+    /* border: 1px solid  rgb(42, 92, 201); */
+    height: 100%;
+}
+
+.box {
+    display: inline-flex;
+    width: 40%;
+    height: 40%;
+    margin: 50px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    background-color: rgb(79, 124, 221);
+    box-shadow: 0 5px 15px  rgb(168, 176, 194);
+
+}
+.box h2 {
+    padding-left: 140px;
+    color: aliceblue;
+}
+
+.box button {
+    position: relative;
+    top: 60%;
+    right: 25%;
+    width: 120px;
+    height: 40px;
+    border-radius: 64px;
+    border: 1px solid  #00c8d6;
+    color:  rgb(42, 92, 201);
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.box button:hover {
+   background-color:  rgb(203, 205, 211);
+   transition: 1s;
+}
+
+
+
+
+/* Media Queries for responsiveness */
+
+/* Tablet view */
+@media screen and (max-width: 768px) {
+    .Head {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+
+    .logo {
+        position: relative;
+        margin: 0 auto;
+    }
+
+    .Head input {
+        margin: 20px auto 0;
+        width: 80%;
+    }
+
+    .h1text h1 {
+        position: relative;
+        left: 0;
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .SideBar {
+        width: 20vw;
+    }
+
+    .SideBar ul li {
+        height: 100px;
+    }
+}
+
+/* Mobile view */
+@media screen and (max-width: 480px) {
+    .Head {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .logo {
+        position: relative;
+        margin: 0 auto;
+        width: 80px;
+        height: 80px;
+    }
+
+    .logo h1 {
+        padding-top: 10px;
+    }
+
+    .Head input {
+        margin: 10px auto 0;
+        width: 90%;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .h1text h1 {
+        font-size: 36px;
+    }
+
+    .SideBar {
+        width: 30vw;
+    }
+
+    .SideBar ul li {
+        height: 80px;
+    }
+}
+
+
+
+
+/* serarch bar css */
+
+
+.outer {
+    position: relative;
+    left: 0%;
+    right: 20%;
+    top: 15vh;
+    width: 100vw;
+    height: 85vh;
+    /* background: rgba(255, 255, 255, 0.267); */
+    /* background: rgba(0, 0, 0, 0.267); */
+    background: rgba(63, 63, 63, 0.267);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+ 
+ .search-bar {
+     width: 100vw;
+     margin-right: 150px;
+     max-width: 700px;
+     background: rgba(255, 255, 255, 0.2);
+     display: flex;
+     align-items: center;
+     border-radius: 60px;
+     padding: 0px 40px;
+     backdrop-filter: blur(4px) saturate(180%);
+ }
+ 
+ .search-bar input {
+     background: transparent;
+     size: 1;
+     flex: 1;
+     border: 0;
+     outline: none;
+     padding: 24px 20px;
+     font-size: 20px;
+     color: #1f1f1f;
+ }
+ 
+ ::placeholder {
+     color:  #284f50b6;
+     background: transparent;
+ }
+ 
+ .search-bar input::after {
+     background: transparent;
+ }
+ 
+ .search-bar button img {
+       width: 25px;
+       border-radius: 50%;
+ }
+ 
+ .search-bar button {
+     border: 0;
+     border-radius: 50%;
+     width: 60px;
+     height: 60px;
+     background: #58629b1c;
+     backdrop-filter: blur(4px) saturate(180%);
+     cursor: pointer;
+ }
+ 
+ .details {
+     position: absolute;
+     left: 45%;
+     top: 20%;
+     transform: translate(-50%, -50%);
+     text-align: center;
+     margin-bottom: 40px;
+ }
+ .details h1 {
+     font-size: 4em;
+     color:  rgb(20, 32, 32);
+     /* margin-right: 150px; */
+ }
+ 
+ .details h3{
+     text-transform: capitalize;
+     color: #01a799;
+     /* margin-right: 150px; */
+
+ }
+ 
+ .details h2 span:nth-child(1) {
+      color: red;
+ }
+ .details h2 span:nth-child(2) {
+      color: yellow;
+ }
+
+
+ /* ffffff LOGO */
+
+ .logoH {
+    margin-bottom: 40%;
+    margin-left: 45%;
+    color: #fff;
+    width: 100px;
+    height: 95px;
+    padding-top: 20px;
+    font-size: xx-large;
+ }
+
+ .logoH:hover {
+    background-color: black;
+    color: aqua;
+    border: 3px solid aqua;
+    width: 100px;
+    height: 95px;
+ }
+
+ /* hhhhhh */
+
+ .addSong_container {
+    position: absolute;
+    display: inline-block;
+    width: 70vw;
+    height: 70vh;
+    left: 18vw;
+    top: 25vh;
+   /* border: 1px solid black; */
+}
+ .PlaySong_container {
+    position: absolute;
+    display: inline-block;
+    width: 70vw;
+    height: 70vh;
+    left: 18vw;
+    top: 25vh;
+   /* border: 1px solid black; */
+}
+
+.songList_container {
+    position: absolute;
+    display: inline-block;
+    width: 70vw;
+    height: 70vh;
+    left: 18vw;
+    top: 25vh;
+   /* border: 1px solid black; */
+}
+
+
+/* Audio Player css */
+.audio-player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.audio-player {
+    min-width: 400px;
+}
+.audio-player:active {
+    color:#01a799;
+}
+
+.audio-button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #00fff2;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.audio-button:hover {
+    background-color: #00b3aa;
+}
+
+.audio-button:active {
+    background-color: #00948d;
+}
+
+
+/* StudentPage.css */
+
+/* Container for the song list with scrolling */
+#song-list-container {
+    position: relative;
+    top: -23vh;
+    left: 20vw;
+    max-height: 400px; /* Set a maximum height for the scrollable area */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ddd; /* Optional: border around the scrollable area */
+    border-radius: 4px; /* Optional: rounded corners */
+    padding: 10px; /* Optional: padding inside the container */
+    margin-top: 20px;
+   width: 50vw;
+   /* margin-left: 350px; */
+   background-color: #c9c9c9;
+   overflow-y: scroll;
+
+
+  }
+
+/* Container for the song list */
+.ssong-list {
+    /* top: 0vh; */
+    /* width: 50vw; */
+    margin-top: 0px;
+    margin-left: 30px;
+    background-color: #a5a5a5;
+    /* border-radius: 64px; */
+    color: #007e5e;
+    padding: 20px ;
+  }
+  
+  /* List items styling */
+  .ssong-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .ssong-list li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+  }
+  
+  .ssong-list li strong {
+    font-size: 18px;
+    margin-right: 10px;
+  }
+  
+  .ssong-list audio {
+    margin-left: 60px;
+  }
+  
+  .ssong-list p {
+    color: #ffffff;
+    font-style: italic;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  

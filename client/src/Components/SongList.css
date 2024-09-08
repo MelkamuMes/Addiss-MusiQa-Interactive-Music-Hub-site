@@ -1,0 +1,97 @@
+.song-list-container {
+    position:absolute;
+    top: 10vh;
+    width: 80%;
+    left: 10vw;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-height: 400px; /* Set a maximum height for the scrollable area */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ddd; /* Optional: border around the scrollable area */
+    /* border-radius: 4px; Optional: rounded corners */
+    /* padding: 10px; Optional: padding inside the container */
+}
+
+.song-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.song-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.song-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.song-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.audio-player {
+    width: 100%;
+    margin-top: 5px;
+    transition: 2s;
+}
+.audio-player::after {
+    width: 100%;
+    margin-top: 5px;
+    transition: 2s;
+}
+
+
+
+.play-button {
+    position: absolute;
+    background-color: #009b93;
+    align-items: last baseline;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 0 5px;
+    left: 80%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.delete-button {
+    background-color: #009b93;
+    border: none;
+    color: white;
+    padding: 2px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #c52e00;
+}
+
+
