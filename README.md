@@ -23,11 +23,11 @@ Feel free to check out my LinkedIn profile for more about my work and profession
 
 ## UI Design
 
-Here's the MockUp a design concept on Figma  :
+Here's the MockUp a design concept on Figma  : [Figma Profile](https://www.figma.com/design/Hz3bu6jbOGyY7o4IYHnbnv/DailyTimeSchedule?node-id=0-1&t=BBMtNyTwaJmEO9rF-1)
 
 ![UI Design Figma](https://github.com/MelkamuMes/Addiss-MusiQa-Interactive-Music-Hub-site/blob/main/client/src/Components/img/Frame%201%20(2).png)
 
-This is The actual Website that i built from the above design concept with some adjustement (i will link my Figma Account link on the bottom so please check them out!)
+This is The actual Website that i built from the above design concept with some adjustement.
 ![HomePage](https://github.com/MelkamuMes/Addiss-MusiQa-Interactive-Music-Hub-site/blob/main/client/src/Components/img/MusicHomePage.png)
 ![Add Songs](https://github.com/MelkamuMes/Addiss-MusiQa-Interactive-Music-Hub-site/blob/main/client/src/Components/img/AddSongPage.png)
 ![Playlist](https://github.com/MelkamuMes/Addiss-MusiQa-Interactive-Music-Hub-site/blob/main/client/src/Components/img/PlaylistPage.png)
@@ -46,7 +46,7 @@ This is The actual Website that i built from the above design concept with some 
 
 - **Frontend**: React, CSS/SCSS, HTML
 - **Backend**: Node.js, Express
-- **Database**: MySQL/PostgreSQL
+- **Database**: MySQL
 - **Audio Library**: [Howler.js](https://howlerjs.com/)
 
 ## Getting Started - Installation & Setup
