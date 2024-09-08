@@ -23,7 +23,7 @@ Feel free to check out my LinkedIn profile for more about my work and profession
 
 ## UI Design
 
-Here's a MockUp on Figma and design concept :
+Here's the MockUp a design concept on Figma  :
 
 ![UI Design Figma](https://github.com/MelkamuMes/Addiss-MusiQa-Interactive-Music-Hub-site/blob/main/client/src/Components/img/Frame%201%20(2).png)
 
