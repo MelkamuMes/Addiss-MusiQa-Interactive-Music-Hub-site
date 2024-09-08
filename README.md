@@ -10,9 +10,6 @@ Welcome to **Addiss MusiQa**, an interactive music hub designed to bring your fa
 - **Search & Filter**: Easily find your favorite songs.
 - **Responsive Design**: Seamless experience on all devices.
 
-## UI Design
-
-![UI Design](https://www.figma.com/design/Hz3bu6jbOGyY7o4IYHnbnv/DailyTimeSchedule?node-id=20-93&t=eSxRynh5wXUjs7LC-1)
 
 ## About the Developer
 
@@ -45,7 +42,7 @@ To run this project locally, follow these steps:
 
 Here's a preview of the user interface design:
 
-![UI Design](path_to_your_ui_design_image.png)
+![UI Design](https://www.figma.com/proto/Hz3bu6jbOGyY7o4IYHnbnv/DailyTimeSchedule?node-id=20-93&t=eSxRynh5wXUjs7LC-1)
 
 ## Technologies Used
 
