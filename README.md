@@ -96,19 +96,22 @@ Feel free to check out my LinkedIn profile for more about my work and profession
 Navigate to the project directory:
 
 ``` bash
-Copy code
-cd  Addiss-MusiQa-Interactive-Music-Hub-site
-Install the dependencies:
+cd  Addiss-MusiQa-Interactive-Music-Hub-site ```
 
-bash
-Copy code
+Install the dependencies: 
+
+``` bash
 npm install
+```
 Start the development server:
 
-bash
-Copy code
-npm start
-Open your browser and go to http://localhost:3000 to view the application.
+``` bash
+npm start 
+  Open your browser and go to http://localhost:3000 to view the application.```
+
+the backend server also is on  
+
+``` bash http://localhost:5000 but you can adjust that.
 
 Contributing
 Feel free to fork the repository, submit issues, and contribute to the project. Your feedback and improvements are highly appreciated!
