@@ -1,6 +1,6 @@
 // !Updated on serachbar
 import React, { useState, useEffect } from 'react';
-import './StudentPage.css';
+import './SongPlayStyle.css';
 import axios from 'axios';
 import SearchIcon from '../img/icons8-music-search-100.png';
 // todo adding a loader for search lists
@@ -70,7 +70,9 @@ function S_Home() {
         </div>
 
         {/* Conditionally render song list only if searchTerm is not empty */}
+        
         {searchTerm && (
+          
           <div id="song-list-container">
             {filteredSongs.length > 0 ? (
               <ul className="ssong-list">
