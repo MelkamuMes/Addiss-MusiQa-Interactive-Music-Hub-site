@@ -35,7 +35,7 @@ function Header() {
         </div>
            <div className='nav'>               
                     <img src={PlaySongs} alt="PlaySongs" />
-                    <Link to='/PlaySongs'>PlaySongs</Link>
+                    <Link to='/Playlist'>PlaySongs</Link>
            </div>
         
         <input value="Register" type="submit" onClick={handleLogoutClick} />
