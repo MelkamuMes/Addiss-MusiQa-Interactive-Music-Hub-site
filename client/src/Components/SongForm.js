@@ -10,7 +10,7 @@ const SongForm = ({ selectedSong, isUpdateMode, onClose }) => {
         if (isUpdateMode && selectedSong) {
             setTitle(selectedSong.title);
             setArtist(selectedSong.artist);
-            setFile(null); // Clear file input when updating
+            setFile(null);
         } else {
             setTitle('');
             setArtist('');
@@ -35,10 +35,10 @@ const SongForm = ({ selectedSong, isUpdateMode, onClose }) => {
                     headers: { 'Content-Type': 'multipart/form-data' },
                 });
             }
-            onClose(true); // Notify success
+            onClose(true);
         } catch (error) {
             console.error('Error submitting form:', error);
-            onClose(false); // Notify failure
+            onClose(false);
         }
     };
 
