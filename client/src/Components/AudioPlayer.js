@@ -1,236 +1,202 @@
-// !Updated
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import DeleteIcon from './img/icons8-delete-30.png';
+import LoadingSpinner from './LoadingSpinner';
+import SongForm from './SongForm';
 
-// import React, { useRef, useState } from 'react';
-// import ReactHowler from 'react-howler';
-// // todo avoiding simultanious audio playing effect
+const containerStyle = css`
+  position: absolute;
+  top: 10vh;
+  width: 80%;
+  left: 10vw;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+`;
 
-// const AudioPlayer = ({ url }) => {
-//     const howlerRef = useRef(null);
-//     const [playing, setPlaying] = useState(false);
+const listStyle = css`
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+`;
 
-//     const handlePlay = () => setPlaying(true);
-//     const handlePause = () => setPlaying(false);
+const itemStyle = css`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+`;
 
-//     return (
-//         <div style={styles.container}>
-//             <ReactHowler
-//                 src={url}
-//                 playing={playing}
-//                 ref={howlerRef}
-//             />
-//             <div style={styles.buttonContainer}>
-//                 <button onClick={handlePlay} style={styles.button}>Play</button>
-//                 <button onClick={handlePause} style={styles.button}>Pause</button>
-//             </div>
-//         </div>
-//     );
-// };
+const infoStyle = css`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
 
-// const styles = {
-//     container: {
-//         display: 'flex',
-//         flexDirection: 'column',
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//         width: '300px',
-//         padding: '20px',
-//         borderRadius: '10px',
-//         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-//         backgroundColor: '#f9f9f9',
-//         margin: '20px auto'
-//     },
-//     buttonContainer: {
-//         marginTop: '15px',
-//         display: 'flex',
-//         gap: '10px'
-//     },
-//     button: {
-//         backgroundColor: '#007bff',
-//         border: 'none',
-//         color: 'white',
-//         padding: '10px 20px',
-//         textAlign: 'center',
-//         textDecoration: 'none',
-//         display: 'inline-block',
-//         fontSize: '16px',
-//         margin: '4px 2px',
-//         borderRadius: '5px',
-//         cursor: 'pointer',
-//         transition: 'background-color 0.3s, transform 0.2s',
-//     },
-//     buttonHover: {
-//         backgroundColor: '#0056b3',
-//         transform: 'scale(1.05)',
-//     },
-// };
+const titleStyle = css`
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+`;
 
-// export default AudioPlayer;
+const audioPlayerStyle = css`
+  width: 100%;
+  margin-top: 5px;
+  transition: 2s;
+`;
 
+const buttonStyle = css`
+  position: absolute;
+  background-color: #009b93;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 
-// ? Newly Updated 2 with next..
-import React, { useRef, useState, useReducer } from 'react';
-import ReactHowler from 'react-howler';
+  &:hover {
+    background-color: #007d75;
+  }
+`;
 
-const initialState = {
-    playing: false,
-    currentIndex: 0,
-    shuffle: false,
-    repeat: false,
-};
+const playButtonStyle = css`
+  left: 70%;
+`;
 
-function reducer(state, action) {
-    switch (action.type) {
-        case 'PLAY':
-            return { ...state, playing: true };
-        case 'PAUSE':
-            return { ...state, playing: false };
-        case 'NEXT':
-            return {
-                ...state,
-                currentIndex: action.shuffle
-                    ? Math.floor(Math.random() * action.songs.length)
-                    : (state.currentIndex + 1) % action.songs.length,
-            };
-        case 'PREVIOUS':
-            return {
-                ...state,
-                currentIndex: state.currentIndex === 0
-                    ? action.songs.length - 1
-                    : state.currentIndex - 1,
-            };
-        case 'TOGGLE_SHUFFLE':
-            return { ...state, shuffle: !state.shuffle };
-        case 'TOGGLE_REPEAT':
-            return { ...state, repeat: !state.repeat };
-        default:
-            return state;
+const updateButtonStyle = css`
+  left: 78%;
+`;
+
+const deleteButtonStyle = css`
+  background-color: #c52e00;
+`;
+
+const addButtonStyle = css`
+  background-color: #009b93;
+`;
+
+const SongList = () => {
+  const [songs, setSongs] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [playingSongId, setPlayingSongId] = useState(null);
+  const [selectedSong, setSelectedSong] = useState(null);
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const [isUpdateMode, setIsUpdateMode] = useState(false);
+  const [notification, setNotification] = useState('');
+
+  useEffect(() => {
+    const fetchSongs = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get('http://localhost:5000/api/songs');
+        setSongs(response.data);
+      } catch (error) {
+        console.error('Error fetching songs:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchSongs();
+  }, []);
+
+  const handlePlay = (id) => {
+    setPlayingSongId(id);
+  };
+
+  const handleDelete = async (id) => {
+    if (window.confirm('Are you sure you want to delete this song?')) {
+      try {
+        await axios.delete(`http://localhost:5000/api/songs/${id}`);
+        setSongs(songs.filter(song => song.id !== id));
+        setNotification('Song deleted successfully!');
+      } catch (error) {
+        console.error('Error deleting song:', error);
+        setNotification('Error deleting song.');
+      }
     }
-}
+  };
 
-const AudioPlayer = ({ songs, initialIndex = 0 }) => {
-    const howlerRef = useRef(null);
-    const [state, dispatch] = useReducer(reducer, {
-        ...initialState,
-        currentIndex: initialIndex,
-    });
+  const handleAddClick = () => {
+    setSelectedSong(null);
+    setIsUpdateMode(false);
+    setIsFormVisible(true);
+  };
 
-    const handlePlay = () => dispatch({ type: 'PLAY' });
-    const handlePause = () => dispatch({ type: 'PAUSE' });
-    const handleNext = () => dispatch({ type: 'NEXT', shuffle: state.shuffle, songs });
-    const handlePrevious = () => dispatch({ type: 'PREVIOUS', songs });
-    const handleShuffle = () => dispatch({ type: 'TOGGLE_SHUFFLE' });
-    const handleRepeat = () => dispatch({ type: 'TOGGLE_REPEAT' });
+  const handleUpdateClick = (song) => {
+    setSelectedSong(song);
+    setIsUpdateMode(true);
+    setIsFormVisible(true);
+  };
 
-    return (
-        <div style={styles.container}>
-            <ReactHowler
-                src={songs[state.currentIndex].url}
-                playing={state.playing}
-                ref={howlerRef}
-                onEnd={() => {
-                    if (state.repeat) {
-                        handlePlay();
-                    } else {
-                        handleNext();
-                    }
-                }}
-            />
-            <div style={styles.buttonContainer}>
-                <button 
-                    onClick={handlePrevious} 
-                    style={styles.button}
-                    aria-label="Previous song"
-                >
-                    Previous
-                </button>
-                <button 
-                    onClick={handlePlay} 
-                    style={styles.button}
-                    aria-label="Play song"
-                >
-                    Play
-                </button>
-                <button 
-                    onClick={handlePause} 
-                    style={styles.button}
-                    aria-label="Pause song"
-                >
-                    Pause
-                </button>
-                <button 
-                    onClick={handleNext} 
-                    style={styles.button}
-                    aria-label="Next song"
-                >
-                    Next
-                </button>
-                <button 
-                    onClick={handleShuffle} 
-                    style={styles.button}
-                    aria-label={state.shuffle ? "Turn off shuffle" : "Turn on shuffle"}
-                >
-                    {state.shuffle ? 'Unshuffle' : 'Shuffle'}
-                </button>
-                <button 
-                    onClick={handleRepeat} 
-                    style={styles.button}
-                    aria-label={state.repeat ? "Turn off repeat" : "Turn on repeat"}
-                >
-                    {state.repeat ? 'No Repeat' : 'Repeat'}
-                </button>
-            </div>
-            <div style={styles.songInfo}>
-                <span style={styles.songTitle}>
-                    {songs[state.currentIndex].title} by {songs[state.currentIndex].artist}
-                </span>
-            </div>
-        </div>
-    );
-};
-
-const styles = {
-    container: {
-        position:'relative',
-        top:'10vh',
-        left: '5vw',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '300px',
-        padding: '20px',
-        borderRadius: '10px',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-        backgroundColor: '#f9f9f9',
-        margin: '20px auto'
-    },
-    buttonContainer: {
-        marginTop: '15px',
-        display: 'flex',
-        gap: '10px'
-    },
-    button: {
-        backgroundColor: '#007bff',
-        border: 'none',
-        color: 'white',
-        padding: '10px 20px',
-        textAlign: 'center',
-        textDecoration: 'none',
-        display: 'inline-block',
-        fontSize: '16px',
-        margin: '4px 2px',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        transition: 'background-color 0.3s, transform 0.2s',
-        outline: 'none'
-    },
-    songInfo: {
-        marginTop: '15px',
-    },
-    songTitle: {
-        fontSize: '16px',
-        fontWeight: 'bold',
+  const handleCloseForm = (success) => {
+    setIsFormVisible(false);
+    setSelectedSong(null);
+    if (success) {
+      setNotification(isUpdateMode ? 'Song updated successfully!' : 'Song added successfully!');
     }
+  };
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
+  return (
+    <div css={containerStyle}>
+      {notification && <div css={css`color: green;`}>{notification}</div>}
+      {isFormVisible && (
+        <SongForm
+          selectedSong={selectedSong}
+          isUpdateMode={isUpdateMode}
+          onClose={handleCloseForm}
+        />
+      )}
+      <button onClick={handleAddClick} css={addButtonStyle}>Add Song</button>
+      <ul css={listStyle}>
+        {songs.map(song => (
+          <li key={song.id} css={itemStyle}>
+            <div css={infoStyle}>
+              <span css={titleStyle}>{song.title} by {song.artist}</span>
+              <audio
+                controls
+                css={audioPlayerStyle}
+                onPlay={() => handlePlay(song.id)}
+                onPause={() => handlePlay(null)}
+                style={{ display: playingSongId === song.id ? 'block' : 'none' }}
+              >
+                <source src={`http://localhost:5000/uploads/${song.audioUrl}`} type="audio/mpeg" />
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+            {playingSongId !== song.id && (
+              <button onClick={() => handlePlay(song.id)} css={[buttonStyle, playButtonStyle]}>Play</button>
+            )}
+            <button onClick={() => handleDelete(song.id)} css={[buttonStyle, deleteButtonStyle]}>
+              <img src={DeleteIcon} alt="DeleteIcon" />
+            </button>
+            <button onClick={() => handleUpdateClick(song)} css={[buttonStyle, updateButtonStyle]}>Update</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
-export default AudioPlayer;
+export default SongList;

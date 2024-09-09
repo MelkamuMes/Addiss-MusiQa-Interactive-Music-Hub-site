@@ -1,6 +1,6 @@
 .song-list-container {
     position:absolute;
-    top: 10vh;
+    top: 15vh;
     width: 80%;
     left: 10vw;
     max-width: 800px;
@@ -127,3 +127,142 @@
 }
 
 
+/* hhhhhh */
+
+.addSong_container {
+    position: absolute;
+    display: inline-block;
+    width: 70vw;
+    height: 70vh;
+    left: 18vw;
+    top: 25vh;
+   /* border: 1px solid black; */
+}
+ .PlaySong_container {
+    position: absolute;
+    display: inline-block;
+    width: 70vw;
+    height: 70vh;
+    left: 18vw;
+    top: 25vh;
+   /* border: 1px solid black; */
+}
+
+.songList_container {
+    position: absolute;
+    display: inline-block;
+    width: 70vw;
+    height: 70vh;
+    left: 18vw;
+    top: 25vh;
+   /* border: 1px solid black; */
+}
+
+
+/* Audio Player css */
+.audio-player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.audio-player {
+    min-width: 400px;
+}
+.audio-player:active {
+    color:#01a799;
+}
+
+.audio-button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #00fff2;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.audio-button:hover {
+    background-color: #00b3aa;
+}
+
+.audio-button:active {
+    background-color: #00948d;
+}
+
+
+/* StudentPage.css */
+
+/* Container for the song list with scrolling */
+#song-list-container {
+    position: relative;
+    top: -23vh;
+    left: 20vw;
+    max-height: 400px; /* Set a maximum height for the scrollable area */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ddd; /* Optional: border around the scrollable area */
+    border-radius: 4px; /* Optional: rounded corners */
+    padding: 10px; /* Optional: padding inside the container */
+    margin-top: 20px;
+   width: 50vw;
+   /* margin-left: 350px; */
+   background-color: #c9c9c9;
+   overflow-y: scroll;
+
+
+  }
+
+/* Container for the song list */
+.ssong-list {
+    /* top: 0vh; */
+    /* width: 50vw; */
+    margin-top: 0px;
+    margin-left: 30px;
+    background-color: #a5a5a5;
+    /* border-radius: 64px; */
+    color: #007e5e;
+    padding: 20px ;
+  }
+  
+  /* List items styling */
+  .ssong-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .ssong-list li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+  }
+  
+  .ssong-list li strong {
+    font-size: 18px;
+    margin-right: 10px;
+  }
+  
+  .ssong-list audio {
+    margin-left: 60px;
+  }
+  
+  .ssong-list p {
+    color: #ffffff;
+    font-style: italic;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const SongForm = ({ selectedSong, isUpdateMode, onClose }) => {
+const SongForm = ({ selectedSong, isUpdateMode }) => {
     const [title, setTitle] = useState('');
     const [artist, setArtist] = useState('');
     const [file, setFile] = useState(null);
+    const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
         if (isUpdateMode && selectedSong) {
@@ -30,15 +32,21 @@ const SongForm = ({ selectedSong, isUpdateMode, onClose }) => {
                 await axios.put(`http://localhost:5000/api/songs/${selectedSong.id}`, formData, {
                     headers: { 'Content-Type': 'multipart/form-data' },
                 });
+                setSuccessMessage('Song updated successfully!');
             } else {
                 await axios.post('http://localhost:5000/api/songs', formData, {
                     headers: { 'Content-Type': 'multipart/form-data' },
                 });
+                setSuccessMessage('Song added successfully!');
             }
-            onClose(true);
+            setTitle('');
+            setArtist('');
+            setFile(null);
+            setErrorMessage(''); // Clear any previous error messages
         } catch (error) {
             console.error('Error submitting form:', error);
-            onClose(false);
+            setErrorMessage('Error submitting form. Please try again.');
+            setSuccessMessage(''); // Clear any previous success messages
         }
     };
 
@@ -68,8 +76,11 @@ const SongForm = ({ selectedSong, isUpdateMode, onClose }) => {
                     onChange={(e) => setFile(e.target.files[0])}
                     style={styles.fileInput}
                 />
-                <button type="submit" style={styles.button}>{isUpdateMode ? 'Update Song' : 'Add Song'}</button>
-                <button type="button" onClick={() => onClose(false)} style={styles.button}>Close</button>
+                <button type="submit" style={styles.button}>
+                    {isUpdateMode ? 'Update Song' : 'Add Song'}
+                </button>
+                {successMessage && <p style={styles.successMessage}>{successMessage}</p>}
+                {errorMessage && <p style={styles.errorMessage}>{errorMessage}</p>}
             </form>
         </div>
     );
@@ -115,6 +126,15 @@ const styles = {
         cursor: 'pointer',
         marginTop: '10px',
         transition: 'background-color 0.3s ease',
+    },
+    successMessage: {
+        color: ' #007e5e',
+        marginTop: '10px',
+        fontSize: '16px',
+    },
+    errorMessage: {
+        color: 'red',
+        marginTop: '10px',
     },
 };
 
