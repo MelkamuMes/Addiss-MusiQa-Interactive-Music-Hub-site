@@ -20,9 +20,7 @@ Feel free to check out my LinkedIn profile for more about my work and profession
 
 [LinkedIn Profile](https://www.linkedin.com/in/melkamu-mesene-4a0780264)
 
-**[please also visit my portifolio website]**
-
-[My Portifolio](https://melkamumeseneofficialportifolio.netlify.app/)
+**[please also visit my portifolio website at [Melkamu Mesene - Malik Official](https://melkamumeseneofficialportifolio.netlify.app/)]**
 
 ## UI Design
 
