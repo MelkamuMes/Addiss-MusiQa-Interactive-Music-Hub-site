@@ -57,14 +57,14 @@ This is The actual Website that i built from the above design concept with some 
 Navigate to the project directory:
 
 ``` bash
-cd  Addiss-MusiQa-Interactive-Music-Hub-site ```
+cd  Addiss-MusiQa-Interactive-Music-Hub-site
 
-Install the dependencies: 
+2 ** Install the dependencies: 
 
 ``` bash
-npm install
-```
-Start the development server:
+    npm install
+
+*** Start the development server:
 
 ``` bash
 npm start 
@@ -76,6 +76,5 @@ Contributing
 Feel free to fork the repository, submit issues, and contribute to the project. Your feedback and improvements are highly appreciated!
 
 License
-This project is licensed under the MIT License.:
+This project is licensed under the[MIT License].:
 
-```
