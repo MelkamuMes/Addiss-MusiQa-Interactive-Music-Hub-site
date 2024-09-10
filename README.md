@@ -10,9 +10,9 @@ Welcome to **Addiss MusiQa**, an interactive music hub designed to bring your fa
 - **Search & Filter**: Easily find your favorite songs.
 - **Responsive Design**: Seamless experience on all devices.
 
-## About the Developer
+## About the Developer 
 
-**[user]**
+**[Mellkamu Mesene]**
 
 I built this project as part of the Addiss Software Internship Challenge. The primary goal was to create an interactive and user-friendly music hub that meets modern web standards. This site was developed using React for the frontend and Node.js with Sequelize for the backend, providing a full-stack solution for managing and playing music.
 
