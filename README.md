@@ -75,6 +75,12 @@ the backend server also is on http://localhost:5000 but you can adjust that.
 Contributing
 Feel free to fork the repository, submit issues, and contribute to the project. Your feedback and improvements are highly appreciated!
 
+For any questions or inquiries, please reach out to the project maintainer:
+
+- **Email**: melkamumesene4@gmail.com
+- **GitHub**: [yourusername](https://github.com/MelkamuMes)
+
+
 License
 This project is licensed under the[MIT License].:
 
