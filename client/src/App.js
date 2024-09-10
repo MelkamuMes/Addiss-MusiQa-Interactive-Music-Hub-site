@@ -6,7 +6,7 @@ import StudentLanding from './Components/StudentPage/Song_Home';
 import PlaylistPage from './Components/StudentPage/Playlist';
 import AddSongPage from './Components/StudentPage/AddSongs';
 import PlaySongs from './Components/StudentPage/PlaySongs';
-
+import './App.css'
 
 
 function App() {
