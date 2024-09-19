@@ -181,7 +181,7 @@ function Footer() {
             <FooterLogo src={Logo} alt="" />
           {/* </div> */}
           <h3><FooterLogoLink href="">Tel +251909091***</FooterLogoLink></h3>
-          <h3><FooterLogoLink href="">addismusiqamusichub@gmail.com</FooterLogoLink></h3>
+          <h3><FooterLogoLink href="">Mail To : Addismusiqamusichub@gmail.com</FooterLogoLink></h3>
           <h3><FooterLogoLink href="">Site: Addis MusiQa music hub</FooterLogoLink></h3>
           <h3><FooterLogoLink href="" target="_blank">GitHub: Melkamu Mesene</FooterLogoLink></h3>
         </FooterCol1>
