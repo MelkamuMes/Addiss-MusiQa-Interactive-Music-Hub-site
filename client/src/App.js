@@ -7,6 +7,7 @@ import PlaylistPage from './Components/StudentPage/Playlist';
 import AddSongPage from './Components/StudentPage/AddSongs';
 import PlaySongs from './Components/StudentPage/PlaySongs';
 import './App.css'
+import Footer from './Components/Footer/Footer';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/playlist" element={<PlaylistPage />} />
         <Route path="/PlaySongs" element={<PlaySongs/>} />
       </Routes>
+      <Footer/>
     </Router>
 
   );
