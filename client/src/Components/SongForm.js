@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { addSong, updateSong } from '../features/slices/songSlice';
 
 const SongForm = ({ selectedSong, isUpdateMode }) => {
     const [title, setTitle] = useState('');
     const [artist, setArtist] = useState('');
     const [file, setFile] = useState(null);
-    const [successMessage, setSuccessMessage] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
+    const dispatch = useDispatch();
+    const { successMessage, error } = useSelector((state) => state.songs);
 
     useEffect(() => {
         if (isUpdateMode && selectedSong) {
@@ -20,33 +21,19 @@ const SongForm = ({ selectedSong, isUpdateMode }) => {
         }
     }, [selectedSong, isUpdateMode]);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append('title', title);
-        formData.append('artist', artist);
-        if (file) formData.append('audio', file);
+        const formData = { title, artist, file };
 
-        try {
-            if (isUpdateMode) {
-                await axios.put(`http://localhost:5000/api/songs/${selectedSong.id}`, formData, {
-                    headers: { 'Content-Type': 'multipart/form-data' },
-                });
-                setSuccessMessage('Song updated successfully!');
-            } else {
-                await axios.post('http://localhost:5000/api/songs', formData, {
-                    headers: { 'Content-Type': 'multipart/form-data' },
-                });
-                setSuccessMessage('Song added successfully!');
+        if (isUpdateMode && selectedSong) {
+            dispatch(updateSong({ id: selectedSong.id, ...formData }));
+        } else {
+            if (window.confirm('Are you sure you want to save this song?')) {
+                dispatch(addSong(formData));
+                setTitle('');
+                setArtist('');
+                setFile(null);
             }
-            setTitle('');
-            setArtist('');
-            setFile(null);
-            setErrorMessage(''); // Clear any previous error messages
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            setErrorMessage('Error submitting form. Please try again.');
-            setSuccessMessage(''); // Clear any previous success messages
         }
     };
 
@@ -80,7 +67,7 @@ const SongForm = ({ selectedSong, isUpdateMode }) => {
                     {isUpdateMode ? 'Update Song' : 'Add Song'}
                 </button>
                 {successMessage && <p style={styles.successMessage}>{successMessage}</p>}
-                {errorMessage && <p style={styles.errorMessage}>{errorMessage}</p>}
+                {error && <p style={styles.errorMessage}>{error}</p>}
             </form>
         </div>
     );
@@ -128,7 +115,7 @@ const styles = {
         transition: 'background-color 0.3s ease',
     },
     successMessage: {
-        color: ' #007e5e',
+        color: '#007e5e',
         marginTop: '10px',
         fontSize: '16px',
     },
