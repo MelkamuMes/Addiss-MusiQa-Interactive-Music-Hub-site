@@ -148,21 +148,7 @@ const NavItem = styled.li`
   }
 `;
 
-const ProfileButton = styled.input`
-  margin-left: 10px;
-  margin-top: 20px;
-  width: 140px;
-  height: 30px;
-  color: rgb(0, 46, 48);
-  border: 2px solid rgb(0, 247, 255);
-  cursor: pointer;
 
-  &:hover {
-    color: #fff;
-    border: #fff;
-    background-color: #00c8d6;
-  }
-`;
 
 function Header() {
   const [isLoginPopupOpen, setLoginPopupOpen] = useState(false);
@@ -204,7 +190,6 @@ function Header() {
               <Link to="/playlist">Playlist</Link>
             </NavItem>
           </NavList>
-          <ProfileButton value="change profile" type="submit" />
         </nav>
       </SideBar>
     </div>
